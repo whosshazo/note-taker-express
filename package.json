@@ -1,19 +1,14 @@
 {
-  "name": "note-taker-express",
+  "name": "note-taker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/whosshazo/note-taker-express.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/whosshazo/note-taker-express/issues"
-  },
-  "homepage": "https://github.com/whosshazo/note-taker-express#readme"
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }
