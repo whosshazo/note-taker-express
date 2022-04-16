@@ -4,7 +4,6 @@ const { v4: uuidv4 } = require("uuid");
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
 
-
 class Store {
   readFile() {
     return readFileAsync("db/db.json", "utf-8");
@@ -19,35 +18,27 @@ class Store {
       let currentNotes;
       try {
         currentNotes = [].concat(JSON.parse(notes));
-      } catch (error) {
+      } catch (err) {
         currentNotes = [];
       }
       return currentNotes;
     });
   }
 
-  addNote() {
-    return this.writeFile().then((note) => {
-      let currentNotes;
-      try {
-        currentNotes = [].concat(JSON.parse(notes));
-      } catch (error) {
-        currentNotes = [];
-      }
-      return currentNotes;
-    });
+  addNote(note) {
+    const { title, text } = note;
+    const newNote = { title, text, id: uuidv4() };
+
+    return this.getNotes()
+      .then((notes) => [...notes, newNote])
+      .then((dummy) => this.writeFile(dummy))
+      .then(() => newNote);
   }
 
   removeNote() {
-    return this.deleteFile().then((note) => {
-      let currentNotes;
-      try {
-        currentNotes = [].concat(JSON.parse(notes));
-      } catch (error) {
-        currentNotes = [];
-      }
-      return currentNotes;
-    });
+    return this.getNotes()
+      .then((notes) => notes.filter((note) => note.id != id))
+      .then((dummy) => this.writeFile(dummy))
   }
 }
 

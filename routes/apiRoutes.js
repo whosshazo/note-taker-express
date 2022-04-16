@@ -11,15 +11,13 @@ router.get("/notes", (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-// Post
+//post
 router.post("/notes", (req, res) => {
-  req.body.id = notes.length.toString().then((notes) => {
     store
       .addNote(req.body)
       .then((note) => res.json(note))
       .catch((err) => res.status(500).json(err));
   });
-});
 
 // Delete
 router.delete("./notes/:id", (req, res) => {
@@ -31,14 +29,3 @@ router.delete("./notes/:id", (req, res) => {
 
 module.exports = router;
 
-// router.post("/animals", (req, res) => {
-//     // set id based on what the next index of the array will be
-//     req.body.id = animals.length.toString();
-
-//     if (!validateAnimal(req.body)) {
-//       res.status(400).send("The animal is not properly formatted.");
-//     } else {
-//       const animal = createNewAnimal(req.body, animals);
-//       res.json(animal);
-//     }
-//   });
