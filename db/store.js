@@ -35,10 +35,10 @@ class Store {
       .then(() => newNote);
   }
 
-  removeNote() {
+  removeNote(id) {
     return this.getNotes()
-      .then((notes) => notes.filter((note) => note.id != id))
-      .then((dummy) => this.writeFile(dummy))
+      .then((notes) => notes.filter((note) => note.id !== id))
+      .then((dummy) => this.writeFile(dummy));
   }
 }
 

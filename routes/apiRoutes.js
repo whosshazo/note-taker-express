@@ -13,14 +13,14 @@ router.get("/notes", (req, res) => {
 
 //post
 router.post("/notes", (req, res) => {
-    store
-      .addNote(req.body)
-      .then((note) => res.json(note))
-      .catch((err) => res.status(500).json(err));
-  });
+  store
+    .addNote(req.body)
+    .then((note) => res.json(note))
+    .catch((err) => res.status(500).json(err));
+});
 
 // Delete
-router.delete("./notes/:id", (req, res) => {
+router.delete("/notes/:id", (req, res) => {
   store
     .removeNote(req.params.id)
     .then(() => res.json({ ok: true }))
@@ -28,4 +28,3 @@ router.delete("./notes/:id", (req, res) => {
 });
 
 module.exports = router;
-
