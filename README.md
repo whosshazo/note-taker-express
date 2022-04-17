@@ -1,4 +1,4 @@
-# Title: Note Taker Plus
+# Title: Note Taker Express
 
 ## Table of Contents:
 
